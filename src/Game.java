@@ -20,7 +20,13 @@ public class Game {
                     "  2) RUN \n" +
                     "  3) TELL him a story \n" +
                     "Choose a number: ");
-            action = reader.nextInt();
+
+            if (reader.hasNextInt()) {
+                action = reader.nextInt();
+            } else {
+                action = 0;
+            }
+
             System.out.println();
 
             switch (action) {
@@ -40,11 +46,9 @@ public class Game {
             if (player.isDead()) {
                 gameOver = true;
             }
-
         }
 
         System.out.println("=== GAME OVER === \nAll good stories eventually come to an end. Now yours did too.");
-
 
     }
 
