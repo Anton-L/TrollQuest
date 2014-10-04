@@ -14,7 +14,7 @@ public class Game {
 
             Troll troll = new Troll();
 
-            System.out.format("Stats: \nHP: %d/100 \nStamina: %d/100 \nCharisma: %d/100 \n\n", player.HP, player.Stamina, player.Charisma);
+            System.out.format("Stats: \nHP: %d/100 \nStamina: %d/100 \nCharisma: %d/100 \n\n", player.getHP(), player.getStamina(), player.getCharisma());
             System.out.print("You have been walking through the forest and suddenly met a very hungry and bored Troll. What will you do?\n" +
                     "  1) FIGHT \n" +
                     "  2) RUN \n" +
@@ -49,7 +49,7 @@ public class Game {
     }
 
     public static void fight(Player player, Troll troll) {
-        if (player.HP > troll.HP) {
+        if (player.getHP() > troll.getHP()) {
             player.takeDamage(5, 10);
             player.memorizeStory(10);
             System.out.print("The troll was an easy enemy. You leave the battlefield with only a couple of scratches.");
@@ -64,7 +64,7 @@ public class Game {
     }
 
     public static void flee(Player player, Troll troll) {
-        if (player.Stamina > troll.Hunger) {
+        if (player.getStamina() > troll.getHunger()) {
             player.getTired(30);
             System.out.print("♫ Just beeeaat it, beeeaaat it!\n" +
                     "♪ Nooo one wants to be defeeeated!\n" +
@@ -84,7 +84,7 @@ public class Game {
     }
 
     public static void story(Player player, Troll troll) {
-        if (player.Charisma > troll.Boredom) {
+        if (player.getCharisma() > troll.getBoredom()) {
             player.rest(50);
             player.heal(25);
             player.memorizeStory(5);

@@ -2,60 +2,72 @@ import java.util.Random;
 
 public class Player {
 
-    int HP;
-    int Stamina;
-    int Charisma;
-    Random random = new Random();
+    private int hp;
+    private int stamina;
+    private int charisma;
+    private Random random = new Random();
 
     public Player(int hp, int stamina, int charisma) {
-        HP = hp;
-        Stamina = stamina;
-        Charisma = charisma;
+        this.hp = hp;
+        this.stamina = stamina;
+        this.charisma = charisma;
+    }
+
+    public int getHP(){
+        return hp;
+    }
+
+    public int getStamina(){
+        return stamina;
+    }
+
+    public int getCharisma(){
+        return charisma;
     }
 
     public boolean isDead() {
-        return (HP == 0);
+        return (hp == 0);
     }
 
     public void takeDamage(int min, int max) {
-        HP -= random.nextInt(max + 1 - min) + min;
-        if (HP < 0) {
-            HP = 0;
+        hp -= random.nextInt(max + 1 - min) + min;
+        if (hp < 0) {
+            hp = 0;
         }
     }
 
     public void heal(int amount) {
-        HP += amount;
-        if (HP > 100) {
-            HP = 100;
+        hp += amount;
+        if (hp > 100) {
+            hp = 100;
         }
     }
 
     public void rest(int amount) {
-        Stamina += amount;
-        if (Stamina > 100) {
-            Stamina = 100;
+        stamina += amount;
+        if (stamina > 100) {
+            stamina = 100;
         }
     }
 
     public void memorizeStory(int amount) {
-        Charisma += amount;
-        if (Charisma > 100) {
-            Charisma = 100;
+        charisma += amount;
+        if (charisma > 100) {
+            charisma = 100;
         }
     }
 
     public void getTired(int amount) {
-        Stamina -= amount;
-        if (Stamina < 0) {
-            Stamina = 0;
+        stamina -= amount;
+        if (stamina < 0) {
+            stamina = 0;
         }
     }
 
     public void getOffended(int amount) {
-        Charisma -= amount;
-        if (Charisma < 0) {
-            Charisma = 0;
+        charisma -= amount;
+        if (charisma < 0) {
+            charisma = 0;
         }
     }
 
